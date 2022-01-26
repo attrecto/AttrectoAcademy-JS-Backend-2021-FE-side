@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { stringify } from 'query-string';
 import isEmpty from 'lodash/isEmpty';
+import env from 'config/env';
 
 import { NotificationType, showNotification } from 'components/notification.component';
 
@@ -75,7 +76,7 @@ export function appendParamsToUrl(url: string, params?: Record<string, any>) {
   return `${url}${query}`;
 }
 
-export function generateUrl({ baseURL = process.env.REACT_APP_API_URL, resource = '', params }: GenerateUrlSettings = {}) {
+export function generateUrl({ baseURL = env.REACT_APP_API_URL, resource = '', params }: GenerateUrlSettings = {}) {
   const url = `${baseURL || ''}/${resource}`;
 
   return appendParamsToUrl(url, params);
