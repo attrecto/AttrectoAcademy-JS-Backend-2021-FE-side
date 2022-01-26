@@ -75,7 +75,7 @@ export function appendParamsToUrl(url: string, params?: Record<string, any>) {
   return `${url}${query}`;
 }
 
-export function generateUrl({ baseURL = '', resource = '', params }: GenerateUrlSettings = {}) {
+export function generateUrl({ baseURL = process.env.REACT_APP_API_URL, resource = '', params }: GenerateUrlSettings = {}) {
   const url = `${baseURL || ''}/${resource}`;
 
   return appendParamsToUrl(url, params);
